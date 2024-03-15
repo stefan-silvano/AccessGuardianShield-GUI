@@ -1,0 +1,105 @@
+<div class="container">
+  <form [formGroup]="userPermissionForm" (ngSubmit)="submitForm()" class="needs-validation">
+    <div class="form-group">
+      <mat-form-field class="form-field-row">
+        <mat-select formControlName="userId" placeholder="User*" required>
+          <mat-option *ngFor="let user of users" [value]="user.id">
+            {{ user.firstName }} {{ user.lastName }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="
+            userPermissionForm.get('userId')?.getError('required') &&
+            userPermissionForm.get('userId')?.touched
+          ">
+          User is required.
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col">
+      <div class="form-group">
+        <mat-form-field class="form-field-row">
+          <mat-select formControlName="permissionId" placeholder="Permission*" required>
+            <mat-option *ngFor="let permission of permissions" [value]="permission.id">
+              {{ permission.name }}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="
+              userPermissionForm.get('permissionId')?.getError('required') &&
+              userPermissionForm.get('permissionId')?.touched
+            ">
+            Permission is required.
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row" style="margin-bottom: 2vh">
+      <div class="col">
+        <div class="form-group">
+          <mat-form-field class="form-field-col">
+            <input matInput [matDatepicker]="startDatePicker" id="startDate" placeholder="Start date*" readonly
+              formControlName="startDate" [class.is-invalid]="
+                userPermissionForm.get('startDate')?.invalid &&
+                userPermissionForm.get('startDate')?.touched
+              " required [max]="userPermissionForm.get('endDate')?.value" />
+            <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+            <mat-datepicker #startDatePicker matDatepickerFormats="myDateFormat"></mat-datepicker>
+            <mat-hint>DD.MM.YYYY</mat-hint>
+            <mat-error *ngIf="
+                userPermissionForm.get('startDate')?.getError('required') &&
+                userPermissionForm.get('startDate')?.touched
+              ">
+              Start date is required.
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-group">
+          <mat-form-field class="form-field-col">
+            <input matInput [matDatepicker]="endDatePicker" id="endDate" placeholder="End date*" readonly
+              formControlName="endDate" [class.is-invalid]="
+                userPermissionForm.get('endDate')?.invalid &&
+                userPermissionForm.get('endDate')?.touched
+              " required [min]="userPermissionForm.get('startDate')?.value" />
+            <mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
+            <mat-datepicker #endDatePicker matDatepickerFormats="myDateFormat"></mat-datepicker>
+            <mat-hint>DD.MM.YYYY</mat-hint>
+            <mat-error *ngIf="
+                userPermissionForm.get('endDate')?.getError('required') &&
+                userPermissionForm.get('endDate')?.touched
+              ">
+              End date is required.
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <mat-form-field class="form-field-row">
+        <input matInput type="text" id="description" placeholder="Description*" formControlName="description"
+          [class.is-invalid]="
+            userPermissionForm.get('description')?.invalid &&
+            userPermissionForm.get('description')?.touched
+          " required />
+        <mat-error *ngIf="
+            userPermissionForm.get('description')?.getError('required') &&
+            userPermissionForm.get('description')?.touched
+          ">
+          Description is required.
+        </mat-error>
+        <mat-error *ngIf="
+            userPermissionForm.get('description')?.getError('minlength') &&
+            userPermissionForm.get('description')?.touched
+          ">
+          Description requires a minimum of 3 characters.
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div>
+      <button mat-raised-button type="submit" [disabled]="userPermissionForm.invalid" class="custom-button"
+        style="margin-top: 2vh">
+        Submit
+      </button>
+    </div>
+  </form>
+</div>

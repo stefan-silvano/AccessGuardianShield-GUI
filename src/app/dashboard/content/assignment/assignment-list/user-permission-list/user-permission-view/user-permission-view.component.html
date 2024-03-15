@@ -1,0 +1,24 @@
+<div mat-dialog-content class="content">
+  <h5 class="modal-title">
+    <span class="content-title">User-Permission</span>
+  </h5>
+  <div class="modal-body">
+    <span class="content-title">User:</span> {{ data.user.firstName }} {{ data.user.lastName }}
+  </div>
+  <div class="modal-body">
+    <span class="content-title">Permission:</span> {{ data.permission.name }}
+  </div>
+  <div class="modal-body">
+    <span class="content-title">Start date:</span> {{ data.startDate }}
+  </div>
+  <div class="modal-body">
+    <span class="content-title">End date:</span> {{ data.endDate }}
+  </div>
+  <div class="modal-body">
+    <span class="content-title">Description:</span> {{ data.description }}
+  </div>
+</div>
+<div mat-dialog-actions class="modal-footer">
+  <div class="spacer"></div>
+  <button mat-button color="basic" (click)="onYesClick()">Back</button>
+</div>

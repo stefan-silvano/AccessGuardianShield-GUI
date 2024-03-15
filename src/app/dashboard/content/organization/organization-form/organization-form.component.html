@@ -1,0 +1,91 @@
+<div class="card-container">
+  <mat-card class="card">
+    <div class="card-header">
+      <h1>{{ title }} organization</h1>
+      <button mat-icon-button (click)="onBack()" style="color: white" matTooltip="Back">
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+    </div>
+    <form [formGroup]="organizationForm" (ngSubmit)="submitForm()" class="needs-validation">
+      <div class="form-group">
+        <mat-form-field>
+          <input matInput type="text" id="name" placeholder="Name*" formControlName="name" [class.is-invalid]="
+            organizationForm.get('name')?.invalid &&
+            organizationForm.get('name')?.touched
+            " required />
+          <mat-error *ngIf="
+          organizationForm.get('name')?.getError('required') &&
+          organizationForm.get('name')?.touched
+            ">
+            Name is required.
+          </mat-error>
+          <mat-error *ngIf="
+          organizationForm.get('name')?.getError('minlength') &&
+          organizationForm.get('name')?.touched
+            ">
+            Name requires a minimum of 2 characters.
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="form-group">
+        <mat-form-field>
+          <input matInput type="text" id="description" placeholder="Description*" formControlName="description"
+            [class.is-invalid]="
+            organizationForm.get('description')?.invalid &&
+            organizationForm.get('description')?.touched
+            " required />
+          <mat-error *ngIf="
+          organizationForm.get('description')?.getError('required') &&
+          organizationForm.get('description')?.touched
+            ">
+            Description is required.
+          </mat-error>
+          <mat-error *ngIf="
+          organizationForm.get('description')?.getError('minlength') &&
+          organizationForm.get('description')?.touched
+            ">
+            Description requires a minimum of 2 characters.
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="form-group">
+        <mat-form-field>
+          <input matInput type="tel" id="phoneNumber" placeholder="Phone*" formControlName="phoneNumber" required />
+          <mat-error *ngIf="
+          organizationForm.get('phoneNumber')?.getError('required') &&
+          organizationForm.get('phoneNumber')?.touched
+            ">
+            Phone number is required.
+          </mat-error>
+          <mat-error *ngIf="
+          organizationForm.get('phoneNumber')?.getError('pattern') &&
+          organizationForm.get('phoneNumber')?.touched
+            ">
+            Please enter a valid phone number.
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="form-group">
+        <mat-form-field>
+          <mat-select formControlName="addressId" placeholder="Address" required>
+            <mat-option *ngFor="let address of addresses" [value]="address.id">
+              {{address.street}}, {{address.number}}, {{address.city}}, {{address.postalCode}}, {{address.country}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="
+              organizationForm.get('addressId')?.getError('required') &&
+              organizationForm.get('addressId')?.touched
+            ">
+            Address is required.
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <button mat-raised-button type="submit" [disabled]="organizationForm.invalid" class="custom-button"
+          style="margin-top: 2vh;">
+          Submit
+        </button>
+      </div>
+    </form>
+  </mat-card>
+</div>

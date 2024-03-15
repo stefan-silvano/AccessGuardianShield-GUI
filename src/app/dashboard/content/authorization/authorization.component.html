@@ -1,0 +1,36 @@
+<div class="card-container">
+  <mat-card class="card">
+    <div class="card-header">
+      <h1>Authorizations</h1>
+      <button mat-icon-button style="color: white;" matTooltip="Refresh">
+        <mat-icon>refresh</mat-icon>
+      </button>
+    </div>
+    <mat-list class="list-group overflow-auto">
+      <mat-list-item
+        *ngFor="let authorization of authorizations; let i = index" style="height: 12vh;"
+      >
+        <div class="card-content">
+          <div class="authorization-details">
+            <div class="authorization-name">
+              {{authorization.user.firstName}} {{authorization.user.lastName}}
+              <mat-icon class="authorization-icon">key</mat-icon>
+              {{authorization.permission.name}}
+            </div>
+            <div class="authorization-date">
+              Start date: {{authorization.startDate}}
+            </div>
+            <div class="authorization-date">
+              End date: {{authorization.endDate}}
+            </div>
+          </div>
+          <div class="card-actions">
+            <button mat-icon-button color="primary" (click)="openViewModal(authorization)" matTooltip="View authorization">
+              <mat-icon style="color: #ED9357">visibility</mat-icon>
+            </button>
+          </div>
+        </div>
+      </mat-list-item>
+    </mat-list>
+  </mat-card>
+</div>

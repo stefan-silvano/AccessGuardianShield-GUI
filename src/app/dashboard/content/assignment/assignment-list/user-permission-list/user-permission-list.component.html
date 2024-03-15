@@ -1,0 +1,29 @@
+<mat-list class="list-group overflow-auto">
+  <mat-list-item *ngFor="let userPermission of userPermissions; let i = index" style="height: 12vh;">
+    <div class="card-content">
+      <div class="user-permission-wrapper">
+        <div class="user-permission-details">
+          <div class="user-permission">
+            {{userPermission.user.firstName}} {{userPermission.user.lastName}}
+            <mat-icon class="user-permission-icon">key</mat-icon>
+            {{userPermission.permission.name}}
+          </div>
+          <div class="user-permission-interval">
+            Start date: {{userPermission.startDate}}
+          </div>
+          <div class="user-permission-interval">
+            End date: {{userPermission.endDate}}
+          </div>
+        </div>
+        <div class="card-actions">
+          <button mat-icon-button style="color: #ED9357;" (click)="openViewModal(userPermission)" matTooltip="View user-permission">
+            <mat-icon>visibility</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="openConfirmationModal(userPermission.id)" matTooltip="Delete user-permission">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  </mat-list-item>
+</mat-list>

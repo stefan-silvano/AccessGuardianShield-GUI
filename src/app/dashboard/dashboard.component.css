@@ -1,0 +1,7 @@
+::ng-deep .mat-mdc-snack-bar-container .mdc-snackbar__surface {
+  background-color: #ED9357 !important;
+}
+
+::ng-deep .mat-mdc-snack-bar-container .mdc-snackbar__label{
+  text-align: center;
+}

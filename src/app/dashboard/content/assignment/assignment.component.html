@@ -1,0 +1,15 @@
+<div class="card-container">
+  <mat-card class="card">
+    <div class="card-header">
+      <h1>Assignments</h1>
+      <button mat-icon-button *ngIf="!isAdd" (click)="newAssignment()" style="color: white;" matTooltip="Assign">
+        <mat-icon>add_circle</mat-icon>
+      </button>
+      <button mat-icon-button *ngIf="isAdd" (click)="onBack()" style="color: white;" matTooltip="Back">
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+    </div>
+    <router-outlet></router-outlet>
+  </mat-card>
+</div>
+

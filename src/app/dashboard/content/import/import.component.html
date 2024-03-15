@@ -1,0 +1,34 @@
+<div class="card-container">
+  <mat-card class="card">
+    <div class="card-header">
+      <h1>Import</h1>
+      <div>
+        <button mat-icon-button (click)="submit()" [disabled]="!jsonContent" matTooltip="Import JSON">
+          <mat-icon>file_upload</mat-icon>
+        </button>
+        <button mat-icon-button (click)="selectFile()" matTooltip="Upload JSON">
+          <mat-icon >upload_file</mat-icon>
+        </button>
+        <button mat-icon-button (click)="resetDrop()" matTooltip="Delete JSON">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+    </div>
+    <mat-chip-listbox style="margin-left: 23px; margin-top: 10px; margin-bottom: 10px;">
+      <mat-chip-option style="margin-left: 0.75vh;" *ngFor="let chip of chips" [selected]="chip.selected"
+        (click)="toggleChipSelection(chip)">
+        {{ chip.label }}
+      </mat-chip-option>
+    </mat-chip-listbox>
+    <mat-card class="drag-drop-card" (drop)="handleDrop($event)" (dragover)="allowDrop($event)">
+      <div class="drag-drop-area" *ngIf="!jsonContent">
+        <mat-icon class="upload-icon">file_upload</mat-icon>
+        <span class="upload-text">Drop JSON file here</span>
+      </div>
+      <div class="drag-drop-area" *ngIf="jsonContent">
+        <mat-icon class="file-icon">description</mat-icon>
+        <span class="file-name">{{ fileName }}</span>
+      </div>
+    </mat-card>
+  </mat-card>
+</div>

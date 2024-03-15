@@ -1,0 +1,53 @@
+.spacer {
+  flex: 1;
+}
+
+.logout-button {
+  margin-left: auto;
+}
+
+.logo {
+  height: 55px;
+  width: auto;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+}
+
+.user-name {
+  font-size: 16px;
+}
+
+.logout-button {
+  display: flex;
+  align-items: center;
+}
+
+.user-menu {
+  margin-left: 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #ED9357;
+}
+
+::ng-deep .mat-mdc-menu-panel.mat-mdc-menu-panel {
+  width: 200px;
+  margin-top: 4px;
+  margin-right: 20px;
+}
+
+::ng-deep .mat-toolbar.mat-primary{
+  background-color: #ED9357;
+}
+
+.search-field{
+  margin-right: 10px;
+  margin-top: 22px;
+}
+
+::ng-deep .mdc-text-field--filled:not(.mdc-text-field--disabled){
+  background-color: #f1f1f1;
+}
+

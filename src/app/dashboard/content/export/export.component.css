@@ -1,0 +1,92 @@
+.card-container {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 125vh;
+  height: 85vh;
+}
+
+h1{
+  margin: 0;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ED9357;
+  color: white;
+  padding: 1rem;
+}
+
+.card-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+
+}
+
+.user-details {
+  flex-grow: 1;
+}
+
+.user-name {
+  color: #303030;
+  font-weight: bold;
+}
+
+.card-actions {
+  display: flex;
+}
+
+.card-actions button {
+  margin-left: 0;
+}
+
+mat-card{
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+mat-list{
+  padding: 0;
+  margin: 0.5vh;
+}
+
+mat-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+mat-list::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 4px;
+}
+
+mat-list::-webkit-scrollbar-thumb:hover {
+  background-color: #aaa;
+}
+
+mat-list::-webkit-scrollbar-track {
+  background-color: #f2f2f2;
+  border-radius: 4px;
+}
+
+mat-list-item{
+  margin: 1vh;
+  padding: 0;
+  max-width: 120.5vh;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.button {
+  align-self: flex-start;
+  margin-left: 20px;
+  width: auto;
+}

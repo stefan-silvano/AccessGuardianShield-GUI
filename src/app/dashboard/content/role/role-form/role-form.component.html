@@ -1,0 +1,103 @@
+<div class="card-container">
+  <mat-card class="card">
+    <div class="card-header">
+      <h1>{{ title }} role</h1>
+      <button mat-icon-button (click)="onBack()" style="color: white" matTooltip="Back">
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+    </div>
+    <form [formGroup]="roleForm" (ngSubmit)="submitForm()" class="needs-validation">
+      <div class="form-group">
+        <mat-form-field>
+          <input matInput type="text" id="name" placeholder="Name*" formControlName="name" [class.is-invalid]="
+              roleForm.get('name')?.invalid &&
+              roleForm.get('name')?.touched
+            " required />
+          <mat-error *ngIf="
+              roleForm.get('name')?.getError('required') &&
+              roleForm.get('name')?.touched
+            ">
+            First name is required.
+          </mat-error>
+          <mat-error *ngIf="
+              roleForm.get('name')?.getError('minlength') &&
+              roleForm.get('name')?.touched
+            ">
+            First name requires a minimum of 2 characters.
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="form-group">
+        <mat-form-field>
+          <input matInput type="text" id="description" placeholder="Description*" formControlName="description"
+            [class.is-invalid]="
+              roleForm.get('description')?.invalid &&
+              roleForm.get('description')?.touched
+            " required />
+          <mat-error *ngIf="
+              roleForm.get('description')?.getError('required') &&
+              roleForm.get('description')?.touched
+            ">
+            Last name is required.
+          </mat-error>
+          <mat-error *ngIf="
+              roleForm.get('description')?.getError('minlength') &&
+              roleForm.get('description')?.touched
+            ">
+            Last name requires a minimum of 2 characters.
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="form-group">
+        <mat-form-field>
+          <mat-select formControlName="riskLevel" placeholder="Risk level" required>
+            <mat-option *ngFor="let riskLevel of riskLevels; let i = index" [value]="riskLevel">
+              {{riskLevel}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="
+              roleForm.get('riskLevel')?.getError('required') &&
+              roleForm.get('riskLevel')?.touched
+            ">
+            Risk level is required.
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="form-group">
+        <mat-form-field>
+          <mat-select formControlName="type" placeholder="Type*" required>
+            <mat-option *ngFor="let type of types; let i = index" [value]="type">
+              {{type}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="
+              roleForm.get('type')?.getError('required') &&
+              roleForm.get('type')?.touched
+            ">
+            Type is required.
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="form-group">
+        <mat-form-field>
+          <mat-select formControlName="containerId" placeholder="Container" required>
+            <mat-option *ngFor="let container of containers" [value]="container.id">
+              {{container.name}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="
+              roleForm.get('containerId')?.getError('required') &&
+              roleForm.get('containerId')?.touched
+            ">
+            Container is required.
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <button mat-raised-button type="submit" [disabled]="roleForm.invalid" class="custom-button" style="margin-top: 1vh;">
+          Submit
+        </button>
+      </div>
+    </form>
+  </mat-card>
+</div>

@@ -1,0 +1,123 @@
+<div class="card-container">
+  <mat-card class="card">
+    <div class="card-header">
+      <h1>{{ title }} address</h1>
+      <button mat-icon-button (click)="onBack()" style="color: white" matTooltip="Back">
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+    </div>  
+    <form [formGroup]="addressForm" (ngSubmit)="submitForm()" class="needs-validation">
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <mat-form-field style="width: 100%">
+              <input matInput type="text" id="street" placeholder="Street*" formControlName="street" [class.is-invalid]="
+                  addressForm.get('street')?.invalid &&
+                  addressForm.get('street')?.touched
+                " required />
+              <mat-error *ngIf="
+                  addressForm.get('street')?.getError('required') &&
+                  addressForm.get('street')?.touched
+                ">
+                Street is required.
+              </mat-error>
+              <mat-error *ngIf="
+                  addressForm.get('street')?.getError('minlength') &&
+                  addressForm.get('street')?.touched
+                ">
+                Street requires a minimum of 3 characters.
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-group">
+            <mat-form-field style="width: 45%">
+              <input matInput type="number" id="number" min="1" placeholder="Number*" formControlName="number"
+                [class.is-invalid]="
+                  addressForm.get('number')?.invalid &&
+                  addressForm.get('number')?.touched
+                " required />
+              <mat-error *ngIf="
+                  addressForm.get('number')?.getError('required') &&
+                  addressForm.get('number')?.touched
+                ">
+                Number is required.
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <mat-form-field style="width: 100%">
+              <input matInput type="text" id="city" placeholder="City*" formControlName="city" [class.is-invalid]="
+                  addressForm.get('city')?.invalid &&
+                  addressForm.get('city')?.touched
+                " required />
+              <mat-error *ngIf="
+                  addressForm.get('city')?.getError('required') &&
+                  addressForm.get('city')?.touched
+                ">
+                City is required.
+              </mat-error>
+              <mat-error *ngIf="
+                  addressForm.get('city')?.getError('minlength') &&
+                  addressForm.get('city')?.touched
+                ">
+                City requires a minimum of 2 characters.
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-group">
+            <mat-form-field style="width: 45%">
+              <input matInput type="number" id="postalCode" min="1" placeholder="Postal code*" formControlName="postalCode"
+                [class.is-invalid]="
+                  addressForm.get('postalCode')?.invalid &&
+                  addressForm.get('postalCode')?.touched
+                " required />
+              <mat-error *ngIf="
+                  addressForm.get('postalCode')?.getError('required') &&
+                  addressForm.get('postalCode')?.touched
+                ">
+                Postal code required.
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <mat-form-field style="width: 73.4% ">
+          <input matInput type="text" id="country" placeholder="Country*" formControlName="country" [class.is-invalid]="
+              addressForm.get('country')?.invalid &&
+              addressForm.get('country')?.touched
+            " required />
+          <mat-error *ngIf="
+              addressForm.get('country')?.getError('required') &&
+              addressForm.get('country')?.touched
+            ">
+            Country is required.
+          </mat-error>
+          <mat-error *ngIf="
+              addressForm.get('country')?.getError('minlength') &&
+              addressForm.get('country')?.touched
+            ">
+            Country requires a minimum of 2 characters.
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <button mat-raised-button type="submit" [disabled]="addressForm.invalid" class="custom-button"
+          style="margin-top: 2vh">
+          Submit
+        </button>
+      </div>
+    </form>
+  </mat-card>
+</div>

@@ -1,0 +1,23 @@
+<div class="card-container">
+  <mat-card class="card">
+    <div class="card-header" style="padding: 24px;">
+      <h1>Export</h1>
+    </div>
+    <mat-list class="list-group overflow-auto">
+      <mat-list-item *ngFor="let export of exports">
+        <div class="card-content">
+          <div class="user-details">
+            <div class="user-name">
+              {{export}}
+            </div>
+          </div>
+          <div class="card-actions">
+            <button mat-icon-button style="color: #ED9357;" (click)="exportData(export)" matTooltip="Export JSON" >
+              <mat-icon>file_download</mat-icon>
+            </button>
+          </div>
+        </div>
+      </mat-list-item>
+    </mat-list>
+  </mat-card>
+</div>

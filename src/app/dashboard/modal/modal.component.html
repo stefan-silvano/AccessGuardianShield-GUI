@@ -1,0 +1,11 @@
+<div mat-dialog-content>
+  <h5 class="modal-title">Confirmation</h5>
+  <div class="modal-body">
+    {{ data }}
+  </div>
+</div>
+<div mat-dialog-actions class="modal-footer">
+  <div class="spacer"></div>
+  <button mat-button color="warn" (click)="onNoClick()">No</button>
+  <button mat-button style="color: #ED9357" (click)="onYesClick()">Yes</button>
+</div>

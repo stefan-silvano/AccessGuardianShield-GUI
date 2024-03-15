@@ -1,0 +1,122 @@
+<div class="container" style="margin-top: 1vh;">
+  <form [formGroup]="userRoleForm" (ngSubmit)="submitForm()" class="needs-validation">
+    <div class="col">
+      <div class="form-group">
+        <mat-form-field class="form-field-row">
+          <mat-select formControlName="roleId" placeholder="Role*" required>
+            <mat-option *ngFor="let role of roles" [value]="role.id">
+              {{ role.name }}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="
+              userRoleForm.get('roleId')?.getError('required') &&
+              userRoleForm.get('roleId')?.touched
+            ">
+            Role is required.
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="form-group">
+      <mat-form-field class="form-field-row">
+        <mat-select formControlName="permissionId" placeholder="Permission*" required>
+          <mat-option *ngFor="let permission of permissions" [value]="permission.id">
+              {{permission.name}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="
+              userRoleForm.get('permissionId')?.getError('required') &&
+              userRoleForm.get('permissionId')?.touched
+            ">
+          Permission is required.
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col">
+      <div class="form-group">
+        <mat-form-field class="form-field-row">
+          <mat-select formControlName="organizationId" placeholder="Organization*" required>
+            <mat-option *ngFor="let organization of organizations" [value]="organization.id">
+              {{ organization.name }}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="
+              userRoleForm.get('organizationId')?.getError('required') &&
+              userRoleForm.get('organizationId')?.touched
+            ">
+            Organization is required.
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row" style="margin-bottom: 2vh;">
+      <div class="col">
+        <div class="form-group">
+          <mat-form-field class="form-field-col">
+            <input matInput [matDatepicker]="startDatePicker" id="startDate" placeholder="Start date*" readonly
+              formControlName="startDate" [class.is-invalid]="
+              userRoleForm.get('startDate')?.invalid &&
+              userRoleForm.get('startDate')?.touched
+            " required [max]="userRoleForm.get('endDate')?.value"/>
+            <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+            <mat-datepicker #startDatePicker matDatepickerFormats="myDateFormat"></mat-datepicker>
+            <mat-hint>DD.MM.YYYY</mat-hint>
+            <mat-error *ngIf="
+              userRoleForm.get('startDate')?.getError('required') &&
+              userRoleForm.get('startDate')?.touched
+            ">
+              Start date is required.
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-group">
+          <mat-form-field class="form-field-col">
+            <input matInput [matDatepicker]="endDatePicker" id="endDate" placeholder="End date*" readonly
+              formControlName="endDate" [class.is-invalid]="
+              userRoleForm.get('endDate')?.invalid &&
+              userRoleForm.get('endDate')?.touched
+            " required [min]="userRoleForm.get('startDate')?.value"/>
+            <mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
+            <mat-datepicker #endDatePicker matDatepickerFormats="myDateFormat"></mat-datepicker>
+            <mat-hint>DD.MM.YYYY</mat-hint>
+            <mat-error *ngIf="
+              userRoleForm.get('endDate')?.getError('required') &&
+              userRoleForm.get('endDate')?.touched
+            ">
+              End date is required.
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <mat-form-field class="form-field-row">
+        <input matInput type="text" id="description" placeholder="Description*" formControlName="description"
+          [class.is-invalid]="
+          userRoleForm.get('description')?.invalid &&
+          userRoleForm.get('description')?.touched
+        " required />
+        <mat-error *ngIf="
+          userRoleForm.get('description')?.getError('required') &&
+          userRoleForm.get('description')?.touched
+        ">
+          Description is required.
+        </mat-error>
+        <mat-error *ngIf="
+          userRoleForm.get('description')?.getError('minlength') &&
+          userRoleForm.get('description')?.touched
+        ">
+          Description requires a minimum of 3 characters.
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div>
+      <button mat-raised-button type="submit" [disabled]="userRoleForm.invalid" class="custom-button"
+      style="margin-top: 0.25vh;">
+        Submit
+      </button>
+    </div>
+  </form>
+</div>

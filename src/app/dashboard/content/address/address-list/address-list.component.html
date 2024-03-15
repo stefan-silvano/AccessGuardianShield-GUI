@@ -1,0 +1,35 @@
+<div class="card-container">
+  <mat-card class="card">
+    <div class="card-header">
+      <h1>Adresses</h1>
+      <button mat-icon-button (click)="newAddress()" style="color: white;" matTooltip="Add address">
+        <mat-icon>add_circle</mat-icon>
+      </button>
+    </div>
+    <mat-list class="list-group overflow-auto">
+      <mat-list-item *ngFor="let address of addresses; let i = index">
+        <div class="card-content">
+          <div class="address-details">
+            <div class="address-street">
+              {{address.street}},
+              {{address.number}},
+              {{ address.postalCode }}
+            </div>
+            <div class="address-city">
+              {{ address.city }},
+              {{ address.country }}
+            </div>
+          </div>
+          <div class="card-actions">
+            <button mat-icon-button style="color: #ED9357" (click)="editAddress(address.id)" matTooltip="Edit address">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button color="warn" (click)="openConfirmationModal(address.id)" matTooltip="Delete address">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        </div>
+      </mat-list-item>
+    </mat-list>
+  </mat-card>
+</div>

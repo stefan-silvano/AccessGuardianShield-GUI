@@ -1,0 +1,144 @@
+<body>
+  <div class="main">
+    <input type="checkbox" id="chk" aria-hidden="true" (click)="onClick()" />
+    <div class="signup">
+      <form (ngSubmit)="register()" [formGroup]="signupForm">
+        <label for="chk" aria-hidden="true" style="margin-bottom: 5px">Sign up</label>
+        <div class="form-group">
+          <mat-form-field class="input">
+            <input matInput type="text" id="firstName" placeholder="First name*" formControlName="firstname"
+              [class.is-invalid]="
+                signupForm.get('firstname')?.invalid &&
+                signupForm.get('firstname')?.touched
+              " required class="mat-form-field-underline" />
+            <mat-error *ngIf="
+            signupForm.get('firstname')?.getError('required') &&
+            signupForm.get('firstname')?.touched
+              ">
+              First name is required.
+            </mat-error>
+            <mat-error *ngIf="
+            signupForm.get('firstname')?.getError('minlength') &&
+            signupForm.get('firstname')?.touched
+              ">
+              First name requires a minimum of 2 characters.
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="form-group">
+          <mat-form-field class="input">
+            <input matInput type="text" id="lastName" placeholder="Last name*" formControlName="lastname"
+              [class.is-invalid]="
+                signupForm.get('lastname')?.invalid &&
+                signupForm.get('lastname')?.touched
+              " required />
+            <mat-error *ngIf="
+            signupForm.get('lastname')?.getError('required') &&
+            signupForm.get('lastname')?.touched
+              ">
+              Last name is required.
+            </mat-error>
+            <mat-error *ngIf="
+            signupForm.get('lastname')?.getError('minlength') &&
+            signupForm.get('lastname')?.touched
+              ">
+              Last name requires a minimum of 2 characters.
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="form-group">
+          <mat-form-field class="input">
+            <input matInput type="email" id="emailLogin" placeholder="E-mail*" formControlName="email" required />
+            <mat-error *ngIf="
+            signupForm.get('email')?.getError('required') &&
+            signupForm.get('email')?.touched
+              ">
+              E-mail is required.
+            </mat-error>
+            <mat-error *ngIf="
+            signupForm.get('email')?.getError('email') &&
+            signupForm.get('email')?.touched
+              ">
+              Please enter a valid email address.
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="form-group">
+          <mat-form-field class="input">
+            <input matInput [type]="hide ? 'password' : 'text'" id="passwordLogin" placeholder="Password*"
+              formControlName="password" required />
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide" type="button" style="color: #303030;">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+            <mat-error *ngIf="
+            signupForm.get('password')?.getError('required') &&
+            signupForm.get('password')?.touched
+              ">
+              Password is required.
+            </mat-error>
+            <mat-error *ngIf="
+            signupForm.get('password')?.getError('pattern') &&
+            signupForm.get('password')?.touched
+              ">
+              Password must contains 8 characters: upper, lower, special and number.
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="button-container">
+          <button mat-raised-button type="submit" [hidden]="button" [disabled]="signupForm.invalid"
+            [disabled]="signupForm.invalid" class="button-form" style="margin-top: 18px;">Register</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="login">
+      <form (ngSubmit)="login()" [formGroup]="loginForm">
+        <label for="chk" aria-hidden="true" style="padding-top: 5px; margin-bottom: 20px;">Login</label>
+        <div class="form-group">
+          <mat-form-field class="input">
+            <input matInput type="email" id="email" placeholder="E-mail*" formControlName="email" required />
+            <mat-error style="color: white !important;" *ngIf="
+            loginForm.get('email')?.getError('required') &&
+            loginForm.get('email')?.touched
+              ">
+              E-mail is required.
+            </mat-error>
+            <mat-error style="color: white !important;" *ngIf="
+            loginForm.get('email')?.getError('email') &&
+            loginForm.get('email')?.touched
+              ">
+              Please enter a valid email address.
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="form-group">
+          <mat-form-field class="input">
+            <input matInput [type]="hide ? 'password' : 'text'" id="password" placeholder="Password*"
+              formControlName="password" />
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide" type="button" style="color: #303030;">
+              <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+            </button>
+            <mat-error style="color: white !important;" *ngIf="
+            loginForm.get('password')?.getError('required') &&
+            loginForm.get('password')?.touched
+              ">
+              Password is required.
+            </mat-error>
+            <mat-error style="color: white !important;" *ngIf="
+            loginForm.get('password')?.getError('pattern') &&
+            loginForm.get('password')?.touched
+              ">
+              Password must contains 8 characters: upper, lower, special and number.
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="button-container">
+          <button mat-raised-button type="submit" [disabled]="loginForm.invalid" [disabled]="loginForm.invalid"
+            class="button-form" style="margin-top: 18px;">Login</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>

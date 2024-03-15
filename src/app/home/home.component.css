@@ -1,0 +1,102 @@
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  overflow-x: auto;
+  max-height: calc(100vh - 64px);
+  padding: 35px;
+  margin-right: 5px;
+}
+
+.card-row {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.card {
+  width: calc(33.33% - 10px);
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 0 2px 8px rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+}
+
+.card:last-child:nth-child(2n),
+.card-row:last-child .card:nth-child(2):only-child {
+  margin-left: 15px;
+  margin-right: auto;
+}
+
+.mat-card {
+  width: 100%;
+}
+
+.card-container::-webkit-scrollbar {
+  width: 10px;
+}
+
+.card-container::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 4px;
+}
+
+.card-container::-webkit-scrollbar-thumb:hover {
+  background-color: #aaa;
+}
+
+.card-container::-webkit-scrollbar-track {
+  background-color: #f2f2f2;
+  border-radius: 4px;
+}
+
+.icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 75px;
+  width: calc(100% + 50px);
+  height: 100px;
+  color: #ED9357;
+}
+
+.header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100vh;
+}
+
+.background{
+  background-color: #F9E9DA;
+  height: 91vh;
+}
+
+::ng-deep .mat-primary .mat-mdc-option.mdc-list-item--selected:not(.mdc-list-item--disabled) .mdc-list-item__primary-text {
+  color: #ED9357 !important;
+}
+
+::ng-deep .mat-primary .mat-pseudo-checkbox-checked.mat-pseudo-checkbox-minimal::after {
+  color: #ED9357 !important;
+}
+
+::ng-deep .mat-mdc-form-field.mat-focused.mat-primary .mat-mdc-select-arrow {
+  color: #ED9357 !important;
+}
+
+::ng-deep .mat-mdc-form-field .mat-mdc-select.mat-mdc-select-invalid .mat-mdc-select-arrow {
+  color: #ED9357 !important;
+}
+
+::ng-deep .mat-mdc-select-value-text{
+  color: #303030 !important;
+}
+
+::ng-deep .mdc-text-field--filled:not(.mdc-text-field--disabled) .mdc-line-ripple::before {
+  border-bottom-color: #ED9357 !important
+}
+
+::ng-deep .mdc-text-field--filled:not(.mdc-text-field--disabled) .mdc-line-ripple::after{
+  border-bottom-color: #ED9357 !important
+}

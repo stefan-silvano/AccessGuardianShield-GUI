@@ -1,0 +1,53 @@
+<div class="card-container">
+  <mat-card class="card">
+    <div class="card-header">
+      <h1>{{ title }} business-code</h1>
+      <button mat-icon-button (click)="onBack()" style="color: white" matTooltip="Back">
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+    </div>
+    <form [formGroup]="businessCodeForm" (ngSubmit)="submitForm()" class="needs-validation">
+      <div class="form-group">
+        <mat-form-field>
+          <input matInput type="text" id="code" placeholder="Code*" formControlName="code" [class.is-invalid]="
+              businessCodeForm.get('code')?.invalid &&
+              businessCodeForm.get('code')?.touched
+            " required />
+          <mat-error *ngIf="
+              businessCodeForm.get('code')?.getError('required') &&
+              businessCodeForm.get('code')?.touched
+            ">
+            Code is required.
+          </mat-error>
+          <mat-error *ngIf="
+              businessCodeForm.get('code')?.getError('minlength') &&
+              businessCodeForm.get('code')?.touched
+            ">
+            Code requires a minimum of 3 characters.
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="form-group">
+        <mat-form-field>
+          <mat-select formControlName="roleId" placeholder="Role" required>
+            <mat-option *ngFor="let role of roles" [value]="role.id">
+              {{role.name}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="
+              businessCodeForm.get('roleId')?.getError('required') &&
+              businessCodeForm.get('roleId')?.touched
+            ">
+            Role is required.
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <button mat-raised-button type="submit" [disabled]="businessCodeForm.invalid" class="custom-button"
+          style="margin-top: 2vh">
+          Submit
+        </button>
+      </div>
+    </form>
+  </mat-card>
+</div>

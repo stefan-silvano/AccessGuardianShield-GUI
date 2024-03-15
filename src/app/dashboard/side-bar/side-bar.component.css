@@ -1,0 +1,68 @@
+mat-sidenav {
+  width: 35vh;
+  border-right: none;
+  background: #ED9357;
+  color: white;
+  text-align: center;
+}
+
+.content {
+  height: calc(100vh - 130px);
+  border-radius: 10px;
+  margin: 16px;
+  margin-left: 32px;
+  padding: 16px;
+  overflow: auto;
+}
+
+mat-sidenav-container {
+  height: 100vh;
+}
+
+.menu-button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 17px;
+}
+
+.avatar {
+  margin-top: 16px;
+  width: 8vh;
+  height: 8vh;
+  border-radius: 50%;
+  background-color: white;
+}
+
+.initials {
+  color: #ED9357;
+  font-weight: 500;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  height: 100%;
+}
+
+.name {
+  margin-top: 8px;
+  font-size: 22px;
+  font-weight: normal;
+}
+
+.designation {
+  margin-top: -1.25vh;
+  font-size: 0.8rem;
+  color: white;
+}
+
+.sidenav-content{
+  background-color: #F9E9DA;
+}
+
+mat-divider {
+  margin-top: 16px;
+  margin-bottom: 16px;
+  background-color: white;
+}

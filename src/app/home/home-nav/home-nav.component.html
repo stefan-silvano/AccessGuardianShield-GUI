@@ -1,0 +1,24 @@
+<mat-toolbar color="primary">
+  <img src="../../../assets/img/logo.png" alt="Logo" class="logo">
+  <span class="spacer"></span>
+  <mat-form-field appearance="fill" class="search-field">
+    <mat-icon matPrefix style="color: #ED9357;">search</mat-icon>
+    <input matInput placeholder="Search" style="font-style: italic;" [(ngModel)]="searchTerm" (keyup)="search()">
+  </mat-form-field>
+  <div class="user-info">
+    <button style="border-radius: 50px; height: 55px; width: 55px; background-color: #f2f2f2; border:0"
+      [matMenuTriggerFor]="userMenu">
+      <div style="color: #ED9357; font-weight: 500;">
+        {{ loggedUser?.firstName?.charAt(0) }}{{ loggedUser?.lastName?.charAt(0) }}
+      </div>
+    </button>
+    <mat-menu #userMenu="matMenu" class="customize">
+      <div style="margin-left: 19px; font-size: 16px; color: #303030;"> {{ loggedUser?.firstName }}
+       {{ loggedUser?.lastName }}</div>
+      <button mat-menu-item (click)="logout()">
+        <mat-icon style="transform: scale(0.8);">logout</mat-icon>
+        <span>Logout</span>
+      </button>
+    </mat-menu>
+  </div>
+</mat-toolbar>

@@ -1,0 +1,96 @@
+<div class="card-container">
+  <mat-card class="card">
+    <div class="card-header">
+      <h1>{{ title }} user</h1>
+      <button mat-icon-button (click)="onBack()" style="color: white" matTooltip="Back">
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+    </div>
+    <form [formGroup]="userForm" (ngSubmit)="submitForm()" class="needs-validation">
+      <div class="form-group">
+        <mat-form-field>
+          <input matInput type="text" id="firstName" placeholder="First name*" formControlName="firstName"
+            [class.is-invalid]="
+              userForm.get('firstName')?.invalid &&
+              userForm.get('firstName')?.touched
+            " required />
+          <mat-error *ngIf="
+              userForm.get('firstName')?.getError('required') &&
+              userForm.get('firstName')?.touched
+            ">
+            First name is required.
+          </mat-error>
+          <mat-error *ngIf="
+              userForm.get('firstName')?.getError('minlength') &&
+              userForm.get('firstName')?.touched
+            ">
+            First name requires a minimum of 2 characters.
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="form-group">
+        <mat-form-field>
+          <input matInput type="text" id="lastName" placeholder="Last name*" formControlName="lastName"
+            [class.is-invalid]="
+              userForm.get('lastName')?.invalid &&
+              userForm.get('lastName')?.touched
+            " required />
+          <mat-error *ngIf="
+              userForm.get('lastName')?.getError('required') &&
+              userForm.get('lastName')?.touched
+            ">
+            Last name is required.
+          </mat-error>
+          <mat-error *ngIf="
+              userForm.get('lastName')?.getError('minlength') &&
+              userForm.get('lastName')?.touched
+            ">
+            Last name requires a minimum of 2 characters.
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="form-group">
+        <mat-form-field>
+          <input matInput type="email" id="email" placeholder="E-mail*" formControlName="email" required />
+          <mat-error *ngIf="
+              userForm.get('email')?.getError('required') &&
+              userForm.get('email')?.touched
+            ">
+            E-mail is required.
+          </mat-error>
+          <mat-error *ngIf="
+              userForm.get('email')?.getError('email') &&
+              userForm.get('email')?.touched
+            ">
+            Please enter a valid email address.
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="form-group">
+        <mat-form-field>
+          <input matInput [type]="hide ? 'password' : 'text'" id="password" placeholder="Password*" formControlName="password" required />
+          <button type="button" *ngIf="!isEdit" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon style="color: #303030;">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+          <mat-error *ngIf="
+              userForm.get('password')?.getError('required') &&
+              userForm.get('password')?.touched
+            ">
+            Password is required.
+          </mat-error>
+          <mat-error *ngIf="
+              userForm.get('password')?.getError('pattern') &&
+              userForm.get('password')?.touched
+            ">
+            Password must contains 8 characters: upper, lower, special and number.
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <button mat-raised-button type="submit" [disabled]="userForm.invalid" class="custom-button" style="margin-top: 2vh;">
+          Submit
+        </button>
+      </div>
+    </form>
+  </mat-card>
+</div>

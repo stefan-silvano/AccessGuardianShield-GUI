@@ -1,0 +1,72 @@
+.user-role-details {
+  flex-grow: 1;
+  margin: 1vh;
+}
+
+.user-role-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.user-role-details {
+  flex: 1;
+}
+
+.user-role{
+  color: #303030;
+  font-weight: bold;
+}
+
+.user-role-interval{
+  color: #303030;
+  font-style: normal;
+}
+
+.card-actions {
+  padding-top: 3.5vh;
+  padding-right: 3.5vh;
+  display: flex;
+}
+
+.card-actions button {
+  margin-left: 0;
+}
+
+mat-list{
+  padding: 0;
+  height: 65vh;
+  margin: 0.5vh;
+}
+
+.user-role-icon{
+  color: #303030; 
+  padding-top: 1.4vh;
+  font-size: 21px;
+  line-height: 1.5vh;
+}
+
+mat-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+mat-list::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 4px;
+}
+
+mat-list::-webkit-scrollbar-thumb:hover {
+  background-color: #aaa;
+}
+
+mat-list::-webkit-scrollbar-track {
+  background-color: #f2f2f2;
+  border-radius: 4px;
+}
+
+mat-list-item{
+  margin: 1vh;
+  padding: 0;
+  max-width: 120.5vh;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}

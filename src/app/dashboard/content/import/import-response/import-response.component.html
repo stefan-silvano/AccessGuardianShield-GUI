@@ -1,0 +1,16 @@
+<div mat-dialog-content class="content" style="overflow-y: auto;">
+  <h5 class="modal-title">
+    <span class="content-title">Import</span>
+  </h5>
+  <div *ngIf="isDataArray()">
+    <div class="modal-body" *ngFor="let d of data; let i = index" >
+      <span style="font-weight: bolder;">{{i+1}}: </span>{{ data[i] }}
+    </div>
+  </div>
+  <div class="modal-body" *ngIf="!isDataArray()">
+    <span style="font-weight: bolder;">Error: </span>{{data}}
+  </div>
+  <div mat-dialog-actions class="modal-footer">
+    <div class="spacer"></div>
+    <button mat-button color="basic" (click)="onYesClick()">Ok</button>
+  </div>

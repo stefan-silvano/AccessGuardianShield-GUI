@@ -1,0 +1,46 @@
+.card-container {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 125vh;
+  height: 85vh;
+}
+
+h1{
+  margin: 0;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ED9357;
+  color: white;
+  padding: 1rem;
+}
+
+.card-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+
+}
+
+.card-actions {
+  display: flex;
+}
+
+.card-actions button {
+  margin-left: 0;
+}
+
+mat-card{
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 0 2px 8px rgba(0, 0, 0, 0.3);
+}

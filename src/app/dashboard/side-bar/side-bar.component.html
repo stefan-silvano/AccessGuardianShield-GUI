@@ -1,0 +1,37 @@
+<mat-sidenav-container color="primary">
+  <mat-sidenav #sidenav="matSidenav" mode="side" color="primary" opened class="mat-elevation-z8">
+
+    <mat-icon class="avatar mat-elevation-z8">
+      <p class="initials">{{letters}}</p>
+    </mat-icon>
+
+    <h4 class="name">{{ name }}</h4>
+    <p class="designation">Admin</p>
+
+    <mat-divider></mat-divider>
+    <button *ngFor="let m of menu_entity" mat-button class="menu-button" [routerLink]="m.link">
+      <mat-icon style="color: white">{{ m.icon }}</mat-icon>
+      <span style="color: white">{{ m.name }}</span>
+    </button>
+    <mat-divider></mat-divider>
+    <button *ngFor="let m of menu_assignment" mat-button class="menu-button" [routerLink]="m.link">
+      <mat-icon style="color: white">{{ m.icon }}</mat-icon>
+      <span style="color: white">{{ m.name }}</span>
+    </button>
+    <mat-divider></mat-divider>
+    <button *ngFor="let m of menu_import_export" mat-button class="menu-button" [routerLink]="m.link">
+      <mat-icon style="color: white">{{ m.icon }}</mat-icon>
+      <span style="color: white">{{ m.name }}</span>
+    </button>
+    <mat-divider></mat-divider>
+    <button mat-button class="menu-button" (click)="logout()">
+      <mat-icon style="color: white">logout</mat-icon>
+      <span style="color: white">Logout</span>
+    </button>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="sidenav-content mat-elevation-z8">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

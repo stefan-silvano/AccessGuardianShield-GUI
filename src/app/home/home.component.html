@@ -1,0 +1,29 @@
+<app-home-nav [searchTerm]="searchTerm" (searchEvent)="performSearch($event)"></app-home-nav>
+<div class="background">
+<div class="card-container">
+  <div class="card-row" *ngFor="let row of rows">
+    <div class="card" *ngFor="let authorization of row">
+      <mat-card class="mat-card">
+        <mat-card-header>
+          <div class="header">
+            <div style="display: flex; align-items: center;">
+              <div>
+                <mat-card-title style="color: #ED9357">{{ authorization.permission.name }}</mat-card-title>
+                <mat-card-subtitle>Role: {{ authorization.role?.name || 'N/A' }}</mat-card-subtitle>
+                <mat-card-subtitle>Start date: {{ authorization.startDate }}</mat-card-subtitle>
+                <mat-card-subtitle>End date: {{ authorization.endDate }} </mat-card-subtitle>
+              </div>
+            </div>
+            <div style="display: flex; justify-content: flex-end;">
+              <mat-icon class="icon">lock_open</mat-icon>
+            </div>
+          </div>
+        </mat-card-header>
+        <mat-card-actions style="display: flex; justify-content: flex-end;">
+          <button mat-button style="color:#ED9357; margin-right: 10px;" matTooltip="Available soon">Launch</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>
+</div>

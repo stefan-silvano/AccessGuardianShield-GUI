@@ -1,0 +1,31 @@
+<div class="card-container">
+  <mat-card class="card">
+    <div class="card-header">
+      <h1>Business-codes</h1>
+      <button mat-icon-button (click)="newBusinessCodes()" style="color: white;" matTooltip="Add business-code">
+        <mat-icon>add_circle</mat-icon>
+      </button>
+    </div>
+    <mat-list class="list-group overflow-auto">
+      <mat-list-item
+        *ngFor="let businessCode of businessCodes; let i = index"
+      >
+        <div class="card-content">
+          <div class="business-codes-details">
+            <div class="business-code-code">
+              {{businessCode.code}}
+            </div>
+          </div>
+          <div class="card-actions">
+            <button mat-icon-button style="color: #ED9357" (click)="editBusinessCodes(businessCode.id)" matTooltip="Edit business-code">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button color="warn" (click)="openConfirmationModal(businessCode.id)" matTooltip="Delete business-code">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        </div>
+      </mat-list-item>
+    </mat-list>
+  </mat-card>
+</div>

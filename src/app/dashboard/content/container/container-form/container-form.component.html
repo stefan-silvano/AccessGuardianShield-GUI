@@ -1,0 +1,75 @@
+<div class="card-container">
+  <mat-card class="card">
+    <div class="card-header">
+      <h1>{{ title }} container</h1>
+      <button mat-icon-button (click)="onBack()" style="color: white" matTooltip="Back">
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+    </div>
+    <form [formGroup]="containerForm" (ngSubmit)="submitForm()" class="needs-validation">
+      <div class="form-group">
+        <mat-form-field>
+          <input matInput type="text" id="name" placeholder="Name*" formControlName="name"
+            [class.is-invalid]="
+            containerForm.get('name')?.invalid &&
+            containerForm.get('name')?.touched
+            " required />
+          <mat-error *ngIf="
+          containerForm.get('name')?.getError('required') &&
+          containerForm.get('name')?.touched
+            ">
+            Name is required.
+          </mat-error>
+          <mat-error *ngIf="
+          containerForm.get('name')?.getError('minlength') &&
+          containerForm.get('name')?.touched
+            ">
+            Name requires a minimum of 3 characters.
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="form-group">
+        <mat-form-field>
+          <input matInput type="text" id="description" placeholder="Description*" formControlName="description"
+            [class.is-invalid]="
+            containerForm.get('description')?.invalid &&
+            containerForm.get('description')?.touched
+            " required />
+          <mat-error *ngIf="
+          containerForm.get('description')?.getError('required') &&
+          containerForm.get('description')?.touched
+            ">
+            Description is required.
+          </mat-error>
+          <mat-error *ngIf="
+          containerForm.get('description')?.getError('minlength') &&
+          containerForm.get('description')?.touched
+            ">
+            description requires a minimum of 3 characters.
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="form-group">
+        <mat-form-field>
+          <mat-select formControlName="parentId" placeholder="Container" required>
+            <mat-option *ngFor="let container of containers" [value]="container.id">
+              {{container.name}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="
+              containerForm.get('parentId')?.getError('required') &&
+              containerForm.get('parentId')?.touched
+            ">
+            Container is required.
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <button mat-raised-button type="submit" [disabled]="containerForm.invalid" class="custom-button"
+          style="margin-top: 2vh;">
+          Submit
+        </button>
+      </div>
+    </form>
+  </mat-card>
+</div>

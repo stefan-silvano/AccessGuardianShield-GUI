@@ -1,0 +1,36 @@
+<div class="card-container">
+  <mat-card class="card">
+    <div class="card-header">
+      <h1>Users</h1>
+      <button mat-icon-button (click)="newUser()" style="color: white;" matTooltip="Add user">
+        <mat-icon>add_circle</mat-icon>
+      </button>
+    </div>
+    <mat-list class="list-group overflow-auto">
+      <mat-list-item
+        *ngFor="let user of users; let i = index"
+      >
+        <div class="card-content">
+          <div class="user-details">
+            <div class="user-name">
+              {{ user.firstName }} {{ user.lastName }}
+            </div>
+            <div class="user-email">
+              {{ user.email }}
+            </div>
+          </div>
+          <div class="card-actions">
+            <button mat-icon-button [style.color]="i !== 0 ? '#ED9357' : '#9E9E9E'" (click)="editUser(user.id)"
+            [disabled]="i===0" matTooltip="Edit user">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button color="warn" (click)="openConfirmationModal(user.id)" [disabled]="i===0"
+            matTooltip="Delete user">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        </div>
+      </mat-list-item>
+    </mat-list>
+  </mat-card>
+</div>

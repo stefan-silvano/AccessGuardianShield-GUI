@@ -1,0 +1,29 @@
+<mat-list class="list-group overflow-auto">
+  <mat-list-item *ngFor="let userRole of userRoles; let i = index" style="height: 12vh;">
+    <div class="card-content">
+      <div class="user-role-wrapper">
+        <div class="user-role-details">
+          <div class="user-role">
+            {{userRole.user.firstName}} {{userRole.user.lastName}}
+            <mat-icon class="user-role-icon">lock</mat-icon>
+            {{userRole.role.name}}
+          </div>
+          <div class="user-role-interval">
+            Start date: {{userRole.startDate}}
+          </div>
+          <div class="user-role-interval">
+            End date: {{userRole.endDate}}
+          </div>
+        </div>
+        <div class="card-actions">
+          <button mat-icon-button style="color: #ED9357" (click)="openViewModal(userRole)" matTooltip="View user-role">
+            <mat-icon>visibility</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="openConfirmationModal(userRole.id)" matTooltip="Delete user-role">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  </mat-list-item>
+</mat-list>
